@@ -1,0 +1,29 @@
+{% load static %}
+
+  <section class='header'>
+    <div class="img_banner">
+      <a href = "{% url 'pag_inicial' %}"><img class="banner" src="{% static 'img\imagem (3).png' %}" alt=""></a>    
+    </div>    
+      <div class='menu'>
+        <ul>
+            <li><a href="">Início</a></li>
+            <li><a href="">Sobre Nós</a></li>
+            <li><a href="">Promoções</a></li>
+            <li><a href="">Informações</a></li>
+            <li><a href="">Ajuda</a></li>
+        </ul>            
+      </div>
+    <div class="search">
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="O que procura?" aria-label="Search"/>
+            <button class="btn btn-outline-sucess button" type="submit">Buscar</button>
+          </form>
+        </div>
+      </nav>
+
+    </div>      
+  </section>
+
+ 

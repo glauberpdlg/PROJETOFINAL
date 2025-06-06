@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .login-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #b4e5ce;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ee5d5d;
+  }
+
+  .login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .login-container input[type="text"],
+  .login-container input[type="password"] {
+    padding: 12px 15px;
+    font-size: 1.1rem;
+    border: 1px solid #58d4bd; /* cinza claro */
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+  }
+
+  .login-container input[type="text"]:focus,
+  .login-container input[type="password"]:focus {
+    border-color: #d09c9f; /* azul vivo */
+    outline: none;
+  }
+
+  .login-container button {
+    padding: 12px;
+    background-color: #8bcec4; /* azul */
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-container button:hover {
+    background-color: #c68c91; /* azul escuro */
+  }
+
+  .login-container .register-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.95rem;
+  }
+
+  .login-container .register-link a {
+    color: #154c3e;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .login-container .register-link a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="login-container">
+  <h2>Login do Cliente</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Entrar</button>
+  </form>
+  <div class="register-link">
+    <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se aqui</a></p>
+  </div>
+</div>
+
+{% endblock %}
