@@ -12,13 +12,17 @@
       <thead>
         <tr style="background-color: #F2B1A2; color: white;">
           <th style="padding: 12px; text-align: left;">Prato</th>
+            <h2></h2>
           <th style="padding: 12px; text-align: center;">Quantidade</th>
         </tr>
       </thead>
       <tbody>
         {% for prato in pratos %}
         <tr style="border-bottom: 1px solid #ccc;">
-          <td style="padding: 12px;">{{ prato.principal }}</td>
+          <td style="padding: 12px; color: #4A8C6D;" >
+            <strong>{{ prato.principal }}</strong><br>
+            <small><em>{{ prato.acompanhamento }}</em></small>
+          </td>
           <td style="padding: 12px; text-align: center;">
             <input type="number" name="quantidade_{{ prato.id }}" min="0" value="0" style="width: 60px; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
           </td>

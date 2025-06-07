@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView
 from .models import Cliente, Cardapio
-from .form import ClienteForm
+from .form import ClienteForm, CurrentClassName
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -88,7 +88,7 @@ def finalizar_pedido(request):
         return redirect('resumo_pedido')
     
 def form_valid(self, form):
-        response = super().form_valid(form)
+        response = super(CurrentClassName, self).method()
 
         # Cria um usuário para login usando email como username e telefone como senha
         email = form.cleaned_data['email']

@@ -1,39 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Resumo do Pedido</h1>
+<div style="max-width: 500px; margin: 50px auto; background: #fffef9; border: 1px solid #ccc; border-radius: 10px; padding: 30px; box-shadow: 0 0 8px rgba(0,0,0,0.1); font-family: 'Segoe UI', sans-serif;">
 
-{% if itens_pedido %}
-  <table>
-    <thead>
-      <tr>
-        <th>Prato</th>
-        <th>Quantidade</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in itens_pedido %}
-      <tr>
-        <td>{{ item.prato.principal }}</td>
-        <td>{{ item.quantidade }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <h2 style="text-align: center; color: #2A8C5E; margin-bottom: 25px;">Resumo do Pedido</h2>
 
-  <p><strong>Total de itens: {{ total_itens }}</strong></p>
+  {% if itens_pedido %}
+    <table style="width: 100%; border-collapse: collapse; font-size: 16px; margin-bottom: 20px;">
+      <thead>
+        <tr style="border-bottom: 2px solid #ccc;">
+          <th style="text-align: left; padding-bottom: 8px;">Prato</th>
+          <th style="text-align: right; padding-bottom: 8px;">Quantidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in itens_pedido %}
+        <tr style="border-bottom: 1px dotted #ddd;">
+          <td style="padding: 10px 0;">
+            <strong>{{ item.prato.principal }}</strong><br>
+            <small style="color: #666;"><em>{{ item.prato.acompanhamento }}</em></small>
+          </td>
+          <td style="text-align: right; padding: 10px 0;">{{ item.quantidade }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
-  <form method="post" action="{% url 'finalizar_pedido' %}">
-    {% csrf_token %}
-    <button type="submit">Finalizar Pedido</button>
-  </form>
+    <p style="text-align: right; font-weight: bold; margin-bottom: 30px;">
+      Total de itens: {{ total_itens }}
+    </p>
 
-{% else %}
-  <p>Sua sacola está vazia.</p>
-{% endif %}
+    <form method="post" action="{% url 'finalizar_pedido' %}" style="text-align: center;">
+      {% csrf_token %}
+      <button type="submit" style="background-color: #8FBFA9; color: white; border: none; padding: 12px 25px; font-size: 16px; border-radius: 6px; cursor: pointer;">
+        Finalizar Pedido
+      </button>
+    </form>
+  {% else %}
+    <p style="text-align: center; color: #999;">Sua sacola está vazia.</p>
+  {% endif %}
 
-<p><a href="{% url 'pag_inicial' %}">Voltar ao cardápio</a></p>
-    
+  <p style="text-align: center; margin-top: 20px;">
+    <a href="{% url 'pag_inicial' %}" style="color: #4A8C6D; font-weight: bold; text-decoration: none;">
+      Voltar ao cardápio
+    </a>
+  </p>
+</div>
+
 {% endblock %}
-
 
